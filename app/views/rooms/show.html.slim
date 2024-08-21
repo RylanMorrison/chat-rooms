@@ -1,0 +1,14 @@
+h1 = @room.name
+h2 = @room.description
+
+.messages
+  = render partial: 'message', collection: @messages
+
+.new-message
+  = form_for Message.new do |f|
+    .message-field
+      = f.text_field :content, value: "", class: 'message-content'
+      = f.hidden_field :room_id, value: @room.id
+      = f.submit 'Send'
+
+= link_to 'Back', rooms_path

@@ -1,0 +1,32 @@
+.rooms {
+  border: solid black 1px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 30px 10px;
+  border: solid black 1px;
+
+  .message {
+    padding: 3px;
+  }
+}
+
+.new-message {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: solid black 1px;
+
+  .message-field {
+    display: flex;
+    flex-direction: row;
+
+    .message-content {
+      width: 100%;
+    }
+  }
+}

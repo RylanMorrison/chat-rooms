@@ -1,0 +1,17 @@
+h1 Sign Up
+
+.navigate
+  | Already have an account? #{link_to 'Log In', login_path}
+
+= form_for @user do |f|
+  - if @user.errors.any?
+    .error_messages 
+      h2 Form is invalid 
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
+
+  = render partial: 'user_fields', locals: { form: f }
+
+  .actions 
+    = f.submit 'Sign Up'

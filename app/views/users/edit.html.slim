@@ -1,0 +1,10 @@
+h1 Edit your details 
+
+= form_for @user, method: :patch do |f|
+
+  = render partial: 'user_fields', locals: { form: f }
+  
+  .actions 
+    = f.submit 'Update'
+
+= link_to 'Back', user_path(@user.id)

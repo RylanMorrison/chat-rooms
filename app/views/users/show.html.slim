@@ -1,0 +1,8 @@
+h1 = "#{@user.name}'s Profile"
+
+= link_to 'Edit Profile', edit_user_path(@user.id)
+
+h2 My Rooms
+= render partial: 'rooms/rooms', locals: { rooms: @user.rooms }
+
+= link_to 'All Rooms', root_path
