@@ -31,10 +31,9 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
 
-  def destroy
-  end
+  def destroy; end
 
-private
+  private
 
   def permitted_params
     params.require(:room).permit(:name, :description)

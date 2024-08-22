@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_151753) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_rooms_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_151753) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "messages", "rooms"

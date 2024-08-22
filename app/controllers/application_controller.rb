@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-protected
+  protected
 
   def current_user
     @_current_user ||= User.find(session[:user_id]) if session[:user_id].present?

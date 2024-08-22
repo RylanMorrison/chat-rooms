@@ -5,5 +5,5 @@ class Room < ApplicationRecord
   has_many :room_users, dependent: :destroy
   has_many :users, through: :room_users
 
-  validates_uniqueness_of :name
+  validates :name, uniqueness: true
 end

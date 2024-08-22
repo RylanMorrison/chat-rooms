@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authorize_user, only: [:show, :edit, :update]
+  before_action :authorize_user, only: %i[show edit update]
 
   def new
     @user = User.new
@@ -35,13 +35,13 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(current_user.id)
   end
 
-private
+  private
 
   def permitted_params
     params.require(:user).permit(
-      :name, 
-      :email, 
-      :password, 
+      :name,
+      :email,
+      :password,
       :password_confirmation
     )
   end

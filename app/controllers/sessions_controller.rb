@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: permitted_params[:email])
@@ -13,7 +12,6 @@ class SessionsController < ApplicationController
       flash.alert = 'Invalid email or password'
       redirect_to login_url
     end
-
   end
 
   def destroy

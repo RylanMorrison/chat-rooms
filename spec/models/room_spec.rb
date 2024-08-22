@@ -17,19 +17,10 @@ describe Room do
 
   context 'validations' do
     it 'validates name uniqueness' do
-      room = Room.create(name: 'Test')
+      Room.create(name: 'Test')
 
-      expect {
-        Room.create(name: 'Test')
-      }.not_to change {
-        Room.count
-      }
-
-      expect {
-        Room.create(name: 'Other')
-      }.to change {
-        Room.count
-      }.by 1
+      expect(Room.create(name: 'Test')).not_to change(Room.count)
+      expect(Room.create(name: 'Other')).to change(Room.count).by(1)
     end
   end
 end

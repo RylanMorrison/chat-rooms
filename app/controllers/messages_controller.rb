@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     redirect_to room_path(room_id)
   end
 
-private
+  private
 
   def permitted_params
     params.require(:message).permit(:content, :room_id)
