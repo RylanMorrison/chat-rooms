@@ -1,0 +1,5 @@
+.header 
+  h3 CHAT ROOMS 
+  - if current_user.present?
+    = link_to 'HOME', root_path
+    = link_to 'PROFILE', user_path(current_user.id)

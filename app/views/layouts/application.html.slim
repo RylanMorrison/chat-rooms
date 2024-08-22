@@ -10,11 +10,8 @@ html
     = javascript_importmap_tags
 
   body
-    - if flash[:alert].present?
-      .alert
-        = flash[:alert]
-    - if flash[:notice].present?
-      .notice
-        = flash[:notice]
-        
-    = yield
+    = render partial: 'shared/header'
+    = render partial: 'shared/flash'
+
+    .content
+      = yield
