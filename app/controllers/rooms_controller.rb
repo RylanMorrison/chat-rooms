@@ -2,6 +2,7 @@
 
 class RoomsController < ApplicationController
   before_action :authorize_user
+  rescue_from ActiveRecord::RecordNotFound, with: :render_new
 
   def new
     @room = Room.new
@@ -21,8 +22,6 @@ class RoomsController < ApplicationController
   def show
     @user = current_user
     @room = Room.find(params[:id])
-    render :new if @room.blank?
-
     @messages = @room.messages
     @new_message = Message.new
   end
@@ -37,5 +36,9 @@ class RoomsController < ApplicationController
 
   def permitted_params
     params.require(:room).permit(:name, :description)
+  end
+
+  def render_new
+    render :new
   end
 end

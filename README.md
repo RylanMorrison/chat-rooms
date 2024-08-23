@@ -4,9 +4,11 @@ Chat Rooms
 
 A site for multiple users to create chat rooms and communicate in them using text messages.
 
-Ruby version: 3.3.2+
+Ruby version: 3.3.2
 
-PostgreSQL version: 16+
+Rails version: 7.1.3.4
+
+PostgreSQL version: 16
 
 - Initial setup: `./bin/setup`
 
