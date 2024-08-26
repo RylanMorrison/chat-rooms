@@ -19,13 +19,13 @@ describe User do
     it 'validates email uniqueness' do
       User.create(email: 'test@email.com', password: '12345')
 
-      expect {
+      expect do
         User.create(email: 'test@email.com', password: '12345')
-      }.not_to change { User.count }
+      end.not_to(change(User, :count))
 
-      expect {
+      expect do
         User.create(email: 'other@email.com', password: '12345')
-      }.to change { User.count }.by(1)
+      end.to(change(User, :count).by(1))
     end
   end
 end

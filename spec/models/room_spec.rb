@@ -19,13 +19,13 @@ describe Room do
     it 'validates name uniqueness' do
       Room.create(name: 'Test')
 
-      expect {
+      expect do
         Room.create(name: 'Test')
-      }.not_to change { Room.count }
+      end.not_to(change(Room, :count))
 
-      expect {
+      expect do
         Room.create(name: 'Other')
-      }.to change { Room.count }.by(1)
+      end.to(change(Room, :count).by(1))
     end
   end
 end
