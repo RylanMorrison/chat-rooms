@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
-  before_action :authorize_user
+  before_action :authorize_user, :set_room
 
   def create
-    message = Message.new(permitted_params)
-    message.user_id = current_user.id
-    message.save!
+    @message = Message.new(permitted_params)
+    @message.user = current_user
+    @message.save!
 
     assign_user_to_room
 
-    redirect_to room_path(room_id)
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @room }
+    end
   end
 
   private
@@ -20,12 +23,12 @@ class MessagesController < ApplicationController
   end
 
   def assign_user_to_room
-    return if current_user.rooms.map(&:id).include?(room_id)
+    return if current_user.rooms.include?(@room)
 
-    current_user.rooms << Room.find(room_id)
+    current_user.rooms << @room
   end
 
-  def room_id
-    permitted_params[:room_id].to_i
+  def set_room
+    @room = Room.find(permitted_params[:room_id])
   end
 end

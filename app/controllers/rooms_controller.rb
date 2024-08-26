@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
     room = Room.new(permitted_params)
     if room.save
       current_user.rooms << room
-      redirect_to room_path(room.id), notice: 'Room created!'
+      redirect_to room, notice: 'Room created!'
     else
       flash.alert = 'Unable to create room'
       redirect_to new_room_path

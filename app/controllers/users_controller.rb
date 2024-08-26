@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     user = User.new(permitted_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to user_path(user.id), notice: 'User created!'
+      redirect_to user, notice: 'User created!'
     else
       flash.alert = 'Unable to create user'
       redirect_to signup_path
