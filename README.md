@@ -2,7 +2,7 @@
 
 Chat Rooms
 
-A site for multiple users to create chat rooms and communicate in them using text messages.
+A practice Rails webapp for multiple users to create chat rooms and communicate in them using text messages.
 
 Ruby version: 3.3.2
 
